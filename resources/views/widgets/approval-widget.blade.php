@@ -1,7 +1,7 @@
 <x-filament-widgets::widget>
     <x-filament::section>
         {{-- Widget content --}}
-        {{$this->record->name}}
+        {{-- {{$this->record->name}} --}}
         {{ $this->submitAction }}
     
     </x-filament::section>
