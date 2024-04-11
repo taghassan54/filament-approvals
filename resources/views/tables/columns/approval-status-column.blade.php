@@ -1,8 +1,5 @@
 <div>
     @if($getRecord()->approvalStatus)
-        <span class="px-3 py-1 bg-green-200 text-green-800 rounded-full text-xs">
-            {{ $getRecord()->approvalStatus->status }}
-        </span>
         <p class="px-3">
             <small>
                 {{ $getRecord()->approvalStatus->status }} {{ __('filament-approvals::approvals.approval_by_prefix') }}
