@@ -81,15 +81,16 @@ class LeaveRequest extends ApprovableModel
 
 ```php
 $table
-    ->actions([
+    ->actions(
         ...\EightyNine\Approvals\Tables\Actions\ApprovalActions::make(
-            // define your actions here that will appear once approval is completed
-            Action::make("Done")
+            // define your action here that will appear once approval is completed
+            Action::make("Done"),
+            [
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()
+            ]
         ),
-        Tables\Actions\EditAction::make(),
-        Tables\Actions\ViewAction::make(),
-
-    ])
+    )
 
 ```
 

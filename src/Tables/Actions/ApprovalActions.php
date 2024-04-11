@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApprovalActions
 {
-    public static function make(Action $action)
+    public static function make(Action|array $action, $alwaysVisibleActions = []): array
     {
-        return [
+        
+        $actions = [
             ActionGroup::make([
                 SubmitAction::make(),
                 ApproveAction::make(),
@@ -23,8 +24,16 @@ class ApprovalActions
                 ->size(ActionSize::Small)
                 ->color('primary')
                 ->button(),
-            $action
-                ->visible(fn (Model $record) => $record->isApprovalCompleted()),
         ];
+        
+        if(is_array($action)) {
+            foreach($action as $a) {
+                $actions[] = $a->visible(fn (Model $record) => $record->isApprovalCompleted());
+            }
+        } else {
+            $actions[] = $action->visible(fn (Model $record) => dump($record->canBeApprovedBy(auth()->user())) . $record->isApprovalCompleted());
+        }
+        
+        return array_merge($actions, $alwaysVisibleActions);
     }
 }
