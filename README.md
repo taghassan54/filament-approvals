@@ -159,6 +159,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 -   [Eighty Nine](https://github.com/eighty9nine)
+-   [Ringlesoft](https://github.com/ringlesoft/laravel-process-approval) for the base approval model logic
 -   [All Contributors](../../contributors)
 
 ## License
