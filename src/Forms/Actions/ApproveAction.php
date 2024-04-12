@@ -32,7 +32,8 @@ class ApproveAction extends Action
                     !$record->isApprovalCompleted() &&
                     !$record->isDiscarded()
             )
-            ->requiresConfirmation();
+            ->requiresConfirmation()
+            ->modalDescription(__('filament-approvals::approvals.actions.approve_confirmation_text'));
     }
 
 

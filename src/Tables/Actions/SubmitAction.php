@@ -27,7 +27,8 @@ class SubmitAction extends Action
             ->label(__('filament-approvals::approvals.actions.submit'))
             ->visible(fn (Model $record) => !$record->isSubmitted() &&
             $record->approvalStatus->creator_id == Auth::id())
-            ->requiresConfirmation();
+            ->requiresConfirmation()
+            ->modalDescription(__('filament-approvals::approvals.actions.submit_confirmation_text'));
     }
 
 

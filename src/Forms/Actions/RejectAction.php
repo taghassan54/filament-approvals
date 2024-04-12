@@ -36,7 +36,8 @@ class RejectAction extends Action
                     !$record->isDiscarded() &&
                     !$record->isRejected()
             )
-            ->requiresConfirmation();
+            ->requiresConfirmation()
+            ->modalDescription(__('filament-approvals::approvals.actions.reject_confirmation_text'));
     }
 
 

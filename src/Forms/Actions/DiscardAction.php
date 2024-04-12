@@ -31,7 +31,8 @@ class DiscardAction extends Action
                 $record->canBeApprovedBy(Auth::user()) &&
                     $record->isRejected()
             )
-            ->requiresConfirmation();
+            ->requiresConfirmation()
+            ->modalDescription(__('filament-approvals::approvals.actions.discard_confirmation_text'));
     }
 
 

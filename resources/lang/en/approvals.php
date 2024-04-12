@@ -20,5 +20,9 @@ return [
         'discard' => 'Discard',
         'reject' => 'Reject',
         'submit' => 'Submit',
+        'reject_confirmation_text' => 'Are you sure you want to reject this record?',
+        'approve_confirmation_text' => 'Are you sure you want to approve this record?',
+        'discard_confirmation_text' => 'Are you sure you want to discard this record?',
+        'submit_confirmation_text' => 'Are you sure you want to submit this record to the next step in the flow?',
     ]
 ];
