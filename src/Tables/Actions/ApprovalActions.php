@@ -31,7 +31,7 @@ class ApprovalActions
                 $actions[] = $a->visible(fn (Model $record) => $record->isApprovalCompleted());
             }
         } else {
-            $actions[] = $action->visible(fn (Model $record) => dump($record->canBeApprovedBy(auth()->user())) . $record->isApprovalCompleted());
+            $actions[] = $action->visible(fn (Model $record) => $record->isApprovalCompleted());
         }
         
         return array_merge($actions, $alwaysVisibleActions);

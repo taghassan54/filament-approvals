@@ -9,4 +9,9 @@ return [
         'approval_in_process' => 'In Process',
         'approval_status_does_not_exist' => 'No Status Exists',
     ],
+    'navigation' => [
+        'label' => 'Approvals',
+        'plural_label' => 'Approvals',
+        'group' => 'Configuration',
+    ]
 ];
