@@ -25,6 +25,8 @@ class RejectAction extends Action
 
         $this->color('danger')
             ->action('Reject')
+            ->label(__('filament-approvals::approvals.actions.reject'))
+            ->icon('heroicon-m-no-symbol')
             ->form($this->getDefaultForm())
             ->visible(
                 fn (Model $record) =>

@@ -13,5 +13,12 @@ return [
         'label' => 'Approvals',
         'plural_label' => 'Approvals',
         'group' => 'Configuration',
+    ],
+    'actions' => [
+        'approvals' => 'Approvals',
+        'approve' => 'Approve',
+        'discard' => 'Discard',
+        'reject' => 'Reject',
+        'submit' => 'Submit',
     ]
 ];

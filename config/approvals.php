@@ -8,4 +8,6 @@ return [
         "icon" => "heroicon-o-clipboard-document-check",
         "sort" => 1
     ],
+    "enable_approval_comments" => false, // Allows also commenting on approvals
+    "enable_rejection_comments" => true, // Allows also commenting on rejections
 ];

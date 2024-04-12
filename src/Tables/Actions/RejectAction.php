@@ -7,6 +7,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
 class RejectAction extends Action
@@ -26,6 +27,8 @@ class RejectAction extends Action
         $this->color('danger')
             ->action('Reject')
             ->form($this->getDefaultForm())
+            ->icon('heroicon-m-no-symbol')
+            ->label(__('filament-approvals::approvals.actions.reject'))
             ->visible(
                 fn (Model $record) =>
                 $record->canBeApprovedBy(Auth::user()) &&
@@ -57,7 +60,9 @@ class RejectAction extends Action
     private function rejectModel(): Closure
     {
         return function (array $data, Model $record): bool {
-            $record->reject($data["comment"], Auth::user());
+            
+            $record->reject(Arr::get($data, 'comment', ''), Auth::user());
+            
             Notification::make()
                 ->title('Rejected successfully')
                 ->success()
@@ -71,7 +76,8 @@ class RejectAction extends Action
     protected function getDefaultForm(): array
     {
         return [
-            Textarea::make("comment"),
+            Textarea::make("comment")
+                ->visible(config('approvals.enable_rejection_comments', true)),
         ];
     }
 }

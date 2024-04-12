@@ -19,7 +19,7 @@ class ApprovalActions
                 DiscardAction::make(),
                 RejectAction::make(),
             ])
-                ->label('Approvals')
+                ->label(__('filament-approvals::approvals.actions.approvals'))
                 ->icon('heroicon-m-ellipsis-vertical')
                 ->size(ActionSize::Small)
                 ->color('primary')

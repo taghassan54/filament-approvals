@@ -23,7 +23,9 @@ class DiscardAction extends Action
         parent::setUp();
 
         $this->color('danger')
+            ->icon('heroicon-m-archive-box-x-mark')
             ->action('Discard')
+            ->label(__('filament-approvals::approvals.actions.discard'))
             ->visible(
                 fn (Model $record) =>
                 $record->canBeApprovedBy(Auth::user()) &&

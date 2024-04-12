@@ -23,6 +23,8 @@ class SubmitAction extends Action
 
         $this->color('primary')
             ->action('Submit')
+            ->label(__('filament-approvals::approvals.actions.submit'))
+            ->icon('heroicon-m-check')
             ->visible(fn (Model $record) => !$record->isSubmitted() &&
             $record->approvalStatus->creator_id == Auth::id())
             ->requiresConfirmation();
