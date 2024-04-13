@@ -25,6 +25,8 @@ class RejectAction extends Action
 
         $this->color('danger')
             ->action('Reject')
+            ->label(__('filament-approvals::approvals.actions.reject'))
+            ->icon('heroicon-m-no-symbol')
             ->form($this->getDefaultForm())
             ->visible(
                 fn (Model $record) =>
@@ -34,7 +36,8 @@ class RejectAction extends Action
                     !$record->isDiscarded() &&
                     !$record->isRejected()
             )
-            ->requiresConfirmation();
+            ->requiresConfirmation()
+            ->modalDescription(__('filament-approvals::approvals.actions.reject_confirmation_text'));
     }
 
 

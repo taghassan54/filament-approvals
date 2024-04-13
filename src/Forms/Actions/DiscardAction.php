@@ -24,12 +24,15 @@ class DiscardAction extends Action
 
         $this->color('danger')
             ->action('Discard')
+            ->label(__('filament-approvals::approvals.actions.discard'))
+            ->icon('heroicon-m-trash')
             ->visible(
                 fn (Model $record) =>
                 $record->canBeApprovedBy(Auth::user()) &&
                     $record->isRejected()
             )
-            ->requiresConfirmation();
+            ->requiresConfirmation()
+            ->modalDescription(__('filament-approvals::approvals.actions.discard_confirmation_text'));
     }
 
 

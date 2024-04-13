@@ -3,9 +3,11 @@
 namespace EightyNine\Approvals\Tables\Actions;
 
 use Closure;
+use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 
 class ApproveAction extends Action
@@ -23,14 +25,21 @@ class ApproveAction extends Action
 
         $this->color('primary')
             ->action('Approve')
+            ->label(__('filament-approvals::approvals.actions.approve'))
+            ->icon('heroicon-m-check')
+            ->label(__('filament-approvals::approvals.actions.approve'))
+            ->form($this->getDefaultForm())
             ->visible(
                 fn (Model $record) =>
+//                dump($record) . dump($record->canBeApprovedBy(Auth::user())) . dump($record->isSubmitted()).dump(!$record->isApprovalCompleted())  .dump(!$record->isDiscarded()).dd('hit').
                 $record->canBeApprovedBy(Auth::user()) &&
                     $record->isSubmitted() &&
                     !$record->isApprovalCompleted() &&
                     !$record->isDiscarded()
             )
-            ->requiresConfirmation();
+            ->requiresConfirmation()
+            ->modalDescription(__('filament-approvals::approvals.actions.approve_confirmation_text'));
+        
     }
 
 
@@ -53,12 +62,20 @@ class ApproveAction extends Action
     private function approveModel(): Closure
     {
         return function (array $data, Model $record): bool {
-            $record->approve(comment: null, user: Auth::user());
+            $record->approve(comment: Arr::get($data, 'comment', ''), user: Auth::user());
             Notification::make()
                 ->title('Approved successfully')
                 ->success()
                 ->send();
             return true;
         };
+    }
+    
+    protected function getDefaultForm(): array
+    {
+        return [
+            Textarea::make("comment")
+                ->visible(config('approvals.enable_approval_comments', false)),
+        ];
     }
 }

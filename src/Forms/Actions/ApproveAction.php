@@ -23,6 +23,8 @@ class ApproveAction extends Action
 
         $this->color('primary')
             ->action('Approve')
+            ->icon('heroicon-m-check')
+            ->label(__('filament-approvals::approvals.actions.approve'))
             ->visible(
                 fn (Model $record) =>
                 $record->canBeApprovedBy(Auth::user()) &&
@@ -30,7 +32,8 @@ class ApproveAction extends Action
                     !$record->isApprovalCompleted() &&
                     !$record->isDiscarded()
             )
-            ->requiresConfirmation();
+            ->requiresConfirmation()
+            ->modalDescription(__('filament-approvals::approvals.actions.approve_confirmation_text'));
     }
 
 
