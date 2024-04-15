@@ -18,13 +18,13 @@ class StepsRelationManager extends RelationManager
 
     public function form(Form $form): Form
     {
-        $rolesModel = (string)config('process_approval.roles_model');
         return $form
+            ->columns(12)
             ->schema([
                 Select::make("role_id")
                     ->label("Role")
                     ->helperText("Who should approve in this step?")
-                    ->options(($rolesModel)::get()
+                    ->options(fn() => ((string) config('process_approval.roles_model'))::get()
                         ->map(fn ($model) => [
                             "name" => str($model->name)
                                 ->replace("_", " ")
@@ -32,16 +32,23 @@ class StepsRelationManager extends RelationManager
                                 ->toString(),
                             "id" => $model->id
                         ])->pluck("name", "id"))
+                    ->columnSpan(6)
                     ->native(false),
                 Select::make("action")
                     ->helperText("What should be done in this step?")
                     ->native(false)
                     ->default("APPROVE")
+                    ->columnSpan(4)
                     ->options([
-                        'APPROVE' => 'Approve',
-                        'VERIFY' => 'Verify',
-                        'CHECK' => 'Check'
-                    ])
+                        'APPROVE' => __('filament-approvals::approvals.actions.approve'),
+                        'VERIFY' =>  __('filament-approvals::approvals.actions.verify'),
+                        'CHECK' => __('filament-approvals::approvals.actions.check'),
+                    ]),
+                TextInput::make('order')
+                    ->label('Order')
+                    ->type('number')
+                    ->columnSpan(2)
+                    ->default(1)
             ]);
     }
 
@@ -60,7 +67,9 @@ class StepsRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()
+                    ->icon('heroicon-s-plus')
+                    ->label(__('filament-approvals::approvals.actions.add_step')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

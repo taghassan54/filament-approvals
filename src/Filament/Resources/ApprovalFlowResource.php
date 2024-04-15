@@ -6,6 +6,8 @@ use EightyNine\Approvals\Filament\Resources\ApprovalFlowResource\Pages;
 use EightyNine\Approvals\Filament\Resources\ApprovalFlowResource\RelationManagers;
 use App\Models\ApprovalFlow;
 use EightyNine\Approvals\Filament\Resources\ApprovalFlowResource\RelationManagers\StepsRelationManager;
+use EightyNine\Approvals\Models\ApprovableModel;
+use EightyNine\Approvals\Services\ModelScannerService;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -16,6 +18,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\HtmlString;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use RingleSoft\LaravelProcessApproval\Models\ProcessApprovalFlow;
 
 class ApprovalFlowResource extends Resource
@@ -57,10 +62,28 @@ class ApprovalFlowResource extends Resource
     }
     public static function form(Form $form): Form
     {
+        $models = (new ModelScannerService())->getApprovableModels();
+        
         return $form
+            ->columns(12)
             ->schema([
                 TextInput::make("name")
+                    ->columnSpan(fn($context) => $context === 'create' ? 12 : 6)
                     ->required(),
+                Select::make('approvable_type')
+                    ->columnSpan(fn($context) => $context === 'create' ? 12 : 6)
+                    ->options(function() use ($models) {
+                        // remove 'App\Models\' from the value of models
+                        $models = array_map(function($model) {
+                            return str_replace('App\Models\\', '', $model);
+                        }, $models);
+                        return $models;
+                    })
+                    ->required(),
+                Forms\Components\Placeholder::make('warning')
+                    ->visible(fn() => empty($models))
+                    ->columnSpanFull()
+                    ->content(new HtmlString('No models in <b>App\Models</b> extend the <b>ApprovableModel</b>. Please see our documentation.'))
             ]);
     }
 
@@ -95,7 +118,7 @@ class ApprovalFlowResource extends Resource
     {
         return [
             'index' => Pages\ListApprovalFlows::route('/'),
-            'create' => Pages\CreateApprovalFlow::route('/create'),
+//            'create' => Pages\CreateApprovalFlow::route('/create'),
             'edit' => Pages\EditApprovalFlow::route('/{record}/edit'),
         ];
     }

@@ -26,7 +26,7 @@ class ApprovalStatusColumn extends Column
                     return [
                         ViewField::make('Approval History')
                             ->hiddenLabel()
-                            ->view('filament-approvals::tables.columns.approval-status-column-action-view', ['data' => $data])
+                            ->view('filament-approvals::tables.columns.approval-status-column-action-view', ['data' => $data, 'record' => $record])
                     ];
                 })
         );
