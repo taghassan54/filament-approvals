@@ -25,5 +25,11 @@ return [
         'discard_confirmation_text' => 'Are you sure you want to discard this record?',
         'submit_confirmation_text' => 'Are you sure you want to submit this record to the next step in the flow?',
         'approval_history' => 'Approval History',
+        'history' => [
+            'Approved' => 'Approved',
+            'Rejected' => 'Rejected',
+            'Discarded' => 'Discarded',
+            'Submitted' => 'Submitted',
+        ]
     ]
 ];

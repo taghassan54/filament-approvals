@@ -1,6 +1,5 @@
 <div>
     @foreach ($data as $a)
-{{--        @dump($a)--}}
         <div class="p-4 bg-gray-50 mb-4 rounded border-1">
             <div class="flex items-center gap-x-3">
                 <img src="{{ Filament\Facades\Filament::getUserAvatarUrl($a->user) }}"
@@ -10,14 +9,14 @@
                 </h3>
                 <time class="flex-none text-xs text-gray-500">{{ $a->created_at->diffForHumans() }} - {{ $a->created_at }}</time>
                 <div class="flex gap-x-4 ml-auto">
-                    <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs
-{{--                    @if($a->approval_action == 'Approved') bg-success-400 text-green-800 @endif--}}
-{{--                    @if($a->approval_action == 'Rejected') bg-danger-400 text-white @endif--}}
-{{--                    @if($a->approval_action == 'Discarded') bg-danger-400 text-white @endif--}}
-{{--                    @if($a->approval_action == 'Pending') bg-warning-400 text-yellow-800 @endif--}}
-{{--                    @if($a->approval_action == 'Submitted') bg-warning-400 text-yellow-800 @endif--}}
+                    <span class="px-3 py-1 bg-red-500 text-gray-800 rounded-full text-xs
+                    @if($a->approval_action == 'Approved') bg-success-400 text-green-800 @endif
+                    @if($a->approval_action == 'Rejected') bg-danger-400 text-white @endif
+                    @if($a->approval_action == 'Discarded') bg-danger-400 text-white @endif
+                    @if($a->approval_action == 'Pending') bg-warning-400 text-yellow-800 @endif
+                    @if($a->approval_action == 'Submitted') bg-warning-400 text-yellow-800 @endif
                     ">
-                        {{ $a->approval_action }}
+                        {{ __('filament-approvals::approvals.actions.history.' . $a->approval_action ) }}
                     </span>
                 </div>
                 </div>
