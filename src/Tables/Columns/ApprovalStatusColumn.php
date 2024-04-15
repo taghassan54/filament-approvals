@@ -19,13 +19,14 @@ class ApprovalStatusColumn extends Column
         
         $this->action(
             ViewAction::make('Approval History')
-                ->modalHeading('Approval History')
+                ->modalHeading(__('filament-approvals::approvals.actions.approval_history'))
                 ->slideOver()
                 ->form(function($record) {
                     $data = $record->approvals()->orderBy('created_at', 'desc')->get();
                     return [
                         ViewField::make('Approval History')
-                        ->view('filament-approvals::tables.columns.approval-status-column-action-view', ['data' => $data])
+                            ->hiddenLabel()
+                            ->view('filament-approvals::tables.columns.approval-status-column-action-view', ['data' => $data])
                     ];
                 })
         );
