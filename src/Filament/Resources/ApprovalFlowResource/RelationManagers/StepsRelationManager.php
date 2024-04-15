@@ -22,6 +22,7 @@ class StepsRelationManager extends RelationManager
             ->columns(12)
             ->schema([
                 Select::make("role_id")
+                    ->searchable()
                     ->label("Role")
                     ->helperText("Who should approve in this step?")
                     ->options(fn() => ((string) config('process_approval.roles_model'))::get()
@@ -48,7 +49,7 @@ class StepsRelationManager extends RelationManager
                     ->label('Order')
                     ->type('number')
                     ->columnSpan(2)
-                    ->default(1)
+                    ->default(fn($livewire) => $livewire->ownerRecord->steps->count() + 1)
             ]);
     }
 
