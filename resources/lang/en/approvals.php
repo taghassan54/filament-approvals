@@ -15,14 +15,25 @@ return [
         'group' => 'Configuration',
     ],
     'actions' => [
+        'create_flow' => 'Create Approval Flow',
+        'add_step' => 'Add Step',
         'approvals' => 'Approvals',
         'approve' => 'Approve',
         'discard' => 'Discard',
         'reject' => 'Reject',
+        'verify' => 'Verify',
+        'check' => 'Check',
         'submit' => 'Submit',
         'reject_confirmation_text' => 'Are you sure you want to reject this record?',
         'approve_confirmation_text' => 'Are you sure you want to approve this record?',
         'discard_confirmation_text' => 'Are you sure you want to discard this record?',
         'submit_confirmation_text' => 'Are you sure you want to submit this record to the next step in the flow?',
+        'approval_history' => 'Approval History',
+        'history' => [
+            'Approved' => 'Approved',
+            'Rejected' => 'Rejected',
+            'Discarded' => 'Discarded',
+            'Submitted' => 'Submitted',
+        ]
     ]
 ];
