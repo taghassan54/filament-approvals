@@ -30,32 +30,32 @@ class ApprovalFlowResource extends Resource
     protected static ?string $modelLabel = 'Approval flow';
 
     protected static ?string $pluralModelLabel = 'Approval flows';
-    
+
     public static function getNavigationIcon(): ?string
     {
         return  config('approvals.navigation.icon', 'heroicon-o-clipboard-document-check');
     }
-    
+
     public static function shouldRegisterNavigation(): bool
     {
-        return config('approvals.navigation.should_register_navigation ', true);
+        return config('approvals.navigation.should_register_navigation', true);
     }
-    
+
     public static function getLabel(): string
     {
         return __('filament-approvals::approvals.navigation.label');
     }
-    
+
     public static function getNavigationGroup(): ?string
     {
         return __('filament-approvals::approvals.navigation.group');
     }
-    
+
     public static function getNavigationSort(): ?int
     {
-        return config('approvals.navigation.sort ', 1);
+        return config('approvals.navigation.sort', 1);
     }
-    
+
     public static function getPluralLabel(): string
     {
         return __('filament-approvals::approvals.navigation.plural_label');
@@ -63,7 +63,7 @@ class ApprovalFlowResource extends Resource
     public static function form(Form $form): Form
     {
         $models = (new ModelScannerService())->getApprovableModels();
-        
+
         return $form
             ->columns(12)
             ->schema([
