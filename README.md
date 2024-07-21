@@ -10,6 +10,10 @@ Some processes in your application require to be approved by multiple people bef
 
 _This package brings the ringlesoft/laravel-process-approval functionalities to filament. You can use all the ringlesoft/laravel-process-approval features in your laravel project_
 
+## 🛠️ Be Part of the Journey
+
+Hi, I'm Eighty Nine. I created aprovals plugin to solve real problems I faced as a developer. Your sponsorship will allow me to dedicate more time to enhancing these tools and helping more people. [Become a sponsor](https://github.com/sponsors/eighty9nine) and join me in making a positive impact on the developer community.
+
 ## Quick understanding the package
 
 ### Approval flow
