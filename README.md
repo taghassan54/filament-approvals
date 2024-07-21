@@ -7,7 +7,11 @@ This package allows you to implement approval flows in your Laravel Filament app
 
 _This package brings the ringlesoft/laravel-process-approval functionalities to filament. You can use all the ringlesoft/laravel-process-approval features in your laravel project. It also uses the spatie/laravel-permissions package, so you can use all its features._
 
-## Quick understanding of the package
+## 🛠️ Be Part of the Journey
+
+Hi, I'm Eighty Nine. I created aprovals plugin to solve real problems I faced as a developer. Your sponsorship will allow me to dedicate more time to enhancing these tools and helping more people. [Become a sponsor](https://github.com/sponsors/eighty9nine) and join me in making a positive impact on the developer community.
+
+## Quick understanding the package
 
 Some processes in your application require to be approved by multiple people before the process can be completed. For example, an employee submits a timesheet, then the supervisor approves, then manager approves and finally the HR approves and the timesheet is logged.
 This package is a solution for this type of processes.
