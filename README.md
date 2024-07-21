@@ -5,7 +5,7 @@
 
 This package allows you to implement approval flows in your Laravel Filament application.
 
-_This package brings the ringlesoft/laravel-process-approval functionalities to filament. You can use all the ringlesoft/laravel-process-approval features in your laravel project. It also uses the spatie/laravel-permissions package, so you can use all its features._
+_This package brings the [ringlesoft/laravel-process-approval](https://github.com/ringlesoft/laravel-process-approval)) functionalities to filament. You can use all the ringlesoft/laravel-process-approval features in your laravel project. It also uses the [spatie/laravel-permissions](https://github.com/spatie/laravel-permissions) package, so you can use all its features._
 
 ## 🛠️ Be Part of the Journey
 
@@ -26,7 +26,7 @@ Approval flows are based on a model, example, ExpenseRequest, LeaveRequest, Time
 
 These are the steps that the process has. Each step is associated with a role that contains users that need to approve. When any of the users in the role approves, the process moves forward to the next step.
 
-This package is based on roles, which are provided by the package spatie/laravel-permission.
+This package is based on roles, which are provided by the package [spatie/laravel-permission](https://github.com/spatie/laravel-permission).
 
 ## Installation
 
@@ -85,15 +85,16 @@ class LeaveRequest extends ApprovableModel
 
 ```php
 $table
-    ->actions([
+    ->actions(
         ...\EightyNine\Approvals\Tables\Actions\ApprovalActions::make(
-            // define your actions here that will appear once approval is completed
-            Action::make("Done")
+            // define your action here that will appear once approval is completed
+            Action::make("Done"),
+            [
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()
+            ]
         ),
-        Tables\Actions\EditAction::make(),
-        Tables\Actions\ViewAction::make(),
-
-    ])
+    )
 
 ```
 
@@ -163,6 +164,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 -   [Eighty Nine](https://github.com/eighty9nine)
+-   [Tony Partridge](https://github.com/tonypartridge)
+-   [Ringlesoft](https://github.com/ringlesoft/laravel-process-approval) for the base approval model logic
 -   [All Contributors](../../contributors)
 
 ## License

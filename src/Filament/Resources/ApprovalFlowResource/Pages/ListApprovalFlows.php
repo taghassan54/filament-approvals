@@ -13,7 +13,12 @@ class ListApprovalFlows extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->icon('heroicon-s-plus')
+                ->modalWidth('md')
+                ->createAnother(false)
+                ->label(__('filament-approvals::approvals.actions.create_flow'))
+                ->after(fn($record) => redirect(ApprovalFlowResource::getUrl('edit', ['record' => $record])))
         ];
     }
 }
