@@ -1,21 +1,21 @@
 {
-    "name": "eightynine/filament-approvals",
+    "name": "taghassan54/filament-approvals",
     "description": "Manage approval processes in your filament application",
     "keywords": [
         "eightynine",
         "laravel",
         "filament-approvals"
     ],
-    "homepage": "https://github.com/eightynine/filament-approvals",
+    "homepage": "https://github.com/taghassan54/filament-approvals",
     "support": {
-        "issues": "https://github.com/eightynine/filament-approvals/issues",
-        "source": "https://github.com/eightynine/filament-approvals"
+        "issues": "https://github.com/taghassan54/filament-approvals/issues",
+        "source": "https://github.com/taghassan54/filament-approvals"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": "Eighty Nine",
-            "email": "eighty9nine@gmail.com",
+            "name": "Eighty Nine fork TajEldeen",
+            "email": "taghassan54@gmail.com",
             "role": "Developer"
         }
     ],
