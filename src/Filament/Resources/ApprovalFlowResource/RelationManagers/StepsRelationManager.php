@@ -42,7 +42,7 @@ class StepsRelationManager extends RelationManager
                     ->columnSpan(4)
                     ->options([
                         'APPROVE' => __('filament-approvals::approvals.actions.approve'),
-                        'VERIFY' =>  __('filament-approvals::approvals.actions.verify'),
+                       // 'VERIFY' =>  __('filament-approvals::approvals.actions.verify'),
                         'CHECK' => __('filament-approvals::approvals.actions.check'),
                     ]),
                 TextInput::make('order')
