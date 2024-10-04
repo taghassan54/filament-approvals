@@ -33,7 +33,7 @@ This package is based on roles, which are provided by the package [spatie/larave
 You can install the package via composer:
 
 ```bash
-composer require eightynine/filament-approvals
+composer require taghassan54/filament-approvals
 ```
 
 ## Usage
